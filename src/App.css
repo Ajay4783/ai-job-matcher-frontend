@@ -1,38 +1,300 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Overall Page Style */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #0f0c29;
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  padding: 40px 20px;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* --- Upload & Scan Buttons --- */
+.scan-btn {
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  margin: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+  display: inline-block;
+}
+
+.scan-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+}
+
+.scan-btn:disabled {
+  background: #444;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* File Input-a hide panni label-a button maathiri kaatta */
+input[type="file"] {
+  display: none;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.file-name-display {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Job Cards Grid --- */
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 30px;
+}
+
+/* Individual Card (Glassmorphism) */
+.job-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 20px;
+  text-align: left;
+  transition: border 0.3s;
+}
+
+.job-card:hover {
+  border: 1px solid #00d2ff;
+}
+
+.job-card h3 {
+  margin-top: 0;
+  color: #00d2ff;
+}
+
+.company {
+  font-style: italic;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+/* --- Score & Status Section --- */
+.score-container, .status-container {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-value {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.high { color: #00ff88; }
+.low { color: #ff4b2b; }
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.pending { background: #ffd700; color: #000; }
+.applied { background: #00ff88; color: #000; }
+
+.status-btn {
+  background: #3a7bd5;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: 0.2s;
+}
+
+.status-btn:hover {
+  background: #00d2ff;
+}
+
+/* --- Skills & Advice --- */
+.skills {
+  margin-bottom: 15px;
+}
+
+.skills ul {
+  padding-left: 20px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.rec {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  border-left: 4px solid #3a7bd5;
+  margin-bottom: 20px;
+}
+
+/* Link to Job */
+.apply-link {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.apply-link:hover {
+  opacity: 0.9;
+}
+
+
+/* --- Portal Selector Style --- */
+.source-selector {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.source-selector h3 {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.portal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.portal-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.portal-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.portal-btn.active {
+  background: rgba(0, 210, 255, 0.2);
+  border-color: #00d2ff;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+.portal-icon {
+  font-size: 1.2rem;
+}
+
+.source-tag {
+  font-size: 0.8rem;
+  color: #00d2ff;
+  font-style: normal;
+  margin-left: 5px;
+}
+
+.main-scan {
+  font-size: 1.2rem;
+  padding: 15px 50px;
+}
+
+
+/* --- Filter Box Style --- */
+.filter-box {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.filter-box h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #00d2ff;
+  text-align: center;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.filter-grid input, .filter-grid select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+.filter-grid input:focus, .filter-grid select:focus {
+  border-color: #00d2ff;
+}
+
+@media (max-width: 600px) {
+  .filter-grid {
+    grid-template-columns: 1fr;
   }
 }
