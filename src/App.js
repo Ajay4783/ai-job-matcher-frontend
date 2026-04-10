@@ -32,7 +32,7 @@ function App() {
     formData.append('file', file);
     setUploading(true);
     try {
-      await axios.post('http://127.0.0.1:8000/api/upload-resume', formData, {
+      await axios.post('https://ai-job-matcher-api-3now.onrender.com/api/upload-resume', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
     } catch (error) {
@@ -46,7 +46,7 @@ function App() {
     setLoading(true);
     try {
       // 👇 Filters-a URL vazhiya Backend-kku anuppurom
-      const response = await axios.get(`http://127.0.0.1:8000/api/scan-jobs?source=${source}&job_title=${jobTitle}&location=${location}&experience=${experience}&job_type=${jobType}`);
+      const response = await axios.get(`https://ai-job-matcher-api-3now.onrender.com/api/scan-jobs?source=${source}&job_title=${jobTitle}&location=${location}&experience=${experience}&job_type=${jobType}`);
       setJobs(response.data.jobs);
     } catch (error) {
       alert("Scan failed! Backend odutha nu paarunga.");
@@ -56,7 +56,7 @@ function App() {
 
   const updateStatus = async (id, newStatus) => {
     try {
-      await axios.patch(`http://127.0.0.1:8000/api/jobs/${id}`, { status: newStatus });
+      await axios.patch(`https://ai-job-matcher-api-3now.onrender.com/api/jobs/${id}`, { status: newStatus });
       scanJobs(); 
     } catch (error) {
       console.error("Status update error", error);
